@@ -5,8 +5,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 const mongoose = require("mongoose");
-
 const authRoute = require('./routes/auth');
+const recipesRoute = require('./routes/recipe');
 
 const port = 4000;
 const atlas =
@@ -24,6 +24,7 @@ const connectToDB = async (req, res) => {
 connectToDB();
 
 app.use("/api/auth", authRoute);
+app.use('/api/recipes', recipesRoute);
 
 app.get("/", (req, res) => {
     res.send("Sidhant's Kitchen Backend is Live!!");
@@ -32,3 +33,4 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
     console.log(`App running on port ${port}!!!`);
 });
+
