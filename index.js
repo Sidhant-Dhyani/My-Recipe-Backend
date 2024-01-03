@@ -7,6 +7,7 @@ app.use(cors());
 const mongoose = require("mongoose");
 const authRoute = require('./routes/auth');
 const recipesRoute = require('./routes/recipe');
+const usersRoute = require('./routes/users');
 
 const port = 4000;
 const atlas =
@@ -25,6 +26,7 @@ connectToDB();
 
 app.use("/api/auth", authRoute);
 app.use('/api/recipes', recipesRoute);
+app.use('/api/users', usersRoute);
 
 app.get("/", (req, res) => {
     res.send("Sidhant's Kitchen Backend is Live!!");
