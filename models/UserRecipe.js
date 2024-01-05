@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const RecipeSchema = new mongoose.Schema({
@@ -32,8 +33,13 @@ const RecipeSchema = new mongoose.Schema({
     tags: {
         type: [],
         required: true
-    }
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', 
+        required: true,
+    },
 });
 
-const RecipeModel = mongoose.model('Recipe', RecipeSchema);
+const RecipeModel = mongoose.model('UserRecipe', RecipeSchema);
 module.exports = RecipeModel;
