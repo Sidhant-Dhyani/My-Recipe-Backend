@@ -5,7 +5,7 @@ const GETALL = async (req, res) => {
     try {
         const filter = {};
         if (req.query.category) {
-            filter.category = filter.category;
+            filter.category = req.query.category;
         }
         const recipes = await Recipe.find(filter);
         res.status(200).json({ recipes });
