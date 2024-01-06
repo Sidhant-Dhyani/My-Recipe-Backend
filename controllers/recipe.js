@@ -3,7 +3,11 @@ const Recipe = require('../models/Recipes');
 
 const GETALL = async (req, res) => {
     try {
-        const recipes = await Recipe.find();
+        const filter = {};
+        if (req.query.category) {
+            filter.category = filter.category;
+        }
+        const recipes = await Recipe.find(filter);
         res.status(200).json({ recipes });
     } catch (error) {
         console.log(error.message);
